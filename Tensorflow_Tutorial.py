@@ -4,9 +4,7 @@ import h5py
 import tensorflow as tf
 from tensorflow.python.framework import ops
 
-
 np.random.seed(1)
-
 
 def one_hot_matrix(labels, C):
     """
@@ -42,22 +40,6 @@ def one_hot_matrix(labels, C):
     ### END CODE HERE ###
     
     return one_hot
-
-
-mnist = tf.contrib.learn.datasets.load_dataset("mnist")
-
-train_data = mnist.train.images # Returns np.array
-train_labels = np.asarray(mnist.train.labels, dtype=np.int32)
-eval_data = mnist.test.images # Returns np.array
-eval_labels = np.asarray(mnist.test.labels, dtype=np.int32)
-
-one_hot_train_labels = one_hot_matrix(train_labels, 10)
-X_train = train_data.T
-Y_train = one_hot_train_labels
-X_test = eval_data.T
-Y_test = one_hot_matrix(eval_labels, 10)
-
-print(X_train.shape,Y_train.shape,X_test.shape,Y_test.shape)
 
 def create_placeholders(n_x, n_y):
     """
@@ -324,5 +306,18 @@ def model(X_train, Y_train, X_test, Y_test, learning_rate = 0.0001,
         
         return parameters
 
+mnist = tf.contrib.learn.datasets.load_dataset("mnist")
 
+train_data = mnist.train.images # Returns np.array
+train_labels = np.asarray(mnist.train.labels, dtype=np.int32)
+eval_data = mnist.test.images # Returns np.array
+eval_labels = np.asarray(mnist.test.labels, dtype=np.int32)
+
+one_hot_train_labels = one_hot_matrix(train_labels, 10)
+X_train = train_data.T
+Y_train = one_hot_train_labels
+X_test = eval_data.T
+Y_test = one_hot_matrix(eval_labels, 10)
+
+print(X_train.shape,Y_train.shape,X_test.shape,Y_test.shape)
 parameters = model(X_train, Y_train, X_test, Y_test)
