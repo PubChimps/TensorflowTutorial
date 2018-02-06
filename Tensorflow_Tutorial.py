@@ -461,6 +461,11 @@ parser.add_argument('--training_iters', type=int, default=1000, help='Number of 
 parser.add_argument('--batch_size', type=int, default=100, help='Training batch size')
 
 FLAGS, unparsed = parser.parse_known_args()
+DATA_DIR = 'MNIST_DATA'
+train_images_file = os.path.join(DATA_DIR, FLAGS.train_images_file)
+train_labels_file = os.path.join(DATA_DIR, FLAGS.train_labels_file)
+test_images_file = os.path.join(DATA_DIR, FLAGS.test_images_file)
+test_labels_file = os.path.join(DATA_DIR, FLAGS.test_labels_file)
 
 
 mnist = read_data_sets(train_images_file, train_labels_file, test_images_file, test_labels_file, one_hot=False)
