@@ -480,5 +480,4 @@ Y_train = one_hot_train_labels
 X_test = eval_data.T
 Y_test = one_hot_matrix(eval_labels, 10)
 
-print(X_train.shape,Y_train.shape,X_test.shape,Y_test.shape)
 parameters = model(X_train, Y_train, X_test, Y_test)
