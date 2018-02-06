@@ -463,13 +463,13 @@ parser.add_argument('--batch_size', type=int, default=100, help='Training batch 
 FLAGS, unparsed = parser.parse_known_args()
 if (FLAGS.result_dir[0] == '$'):
     RESULT_DIR = os.environ[FLAGS.result_dir[1:]]
-  else:
+else:
     RESULT_DIR = FLAGS.result_dir
-  model_path = os.path.join(RESULT_DIR, "model")
-  if (FLAGS.data_dir[0] == '$'):
-    DATA_DIR = os.environ[FLAGS.data_dir[1:]]
-  else:
-    DATA_DIR = FLAGS.data_dir
+model_path = os.path.join(RESULT_DIR, "model")
+if (FLAGS.data_dir[0] == '$'):
+  DATA_DIR = os.environ[FLAGS.data_dir[1:]]
+else:
+  DATA_DIR = FLAGS.data_dir
     
 train_images_file = os.path.join(DATA_DIR, FLAGS.train_images_file)
 train_labels_file = os.path.join(DATA_DIR, FLAGS.train_labels_file)
